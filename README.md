@@ -19,8 +19,8 @@ The compiler will highlight any syntax errors or potential issues in the code.
 
 Deploying the Smart Contract:
 Connect to a Blockchain: Choose a network (e.g Ropsten Testnet) and connect your wallet (e.g., MetaMask).
-Deploy the Contract: Use the deployment feature in your IDE. This will send a transaction to the blockchain to create the contract on the network.
-Get the Contract Address: Once deployed, you'll receive the  contract's address, which can be used to interact with it.
+Use the deployment feature in the IDE. This will send a transaction to the blockchain to create the contract on the network.
+Once deployed, you'll receive the  contract's address, which can be used to interact with it.
 
 Connecting Remix to GitHub  is the major challenge I faced
 But I was able to solve it using Gemini AI and also watching some video tutorials on YouTube
