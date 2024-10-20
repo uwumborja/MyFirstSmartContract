@@ -14,7 +14,7 @@ I Used Solidity syntax to define my contract's variables, functions, and modifie
 
 compiling:
 Remix development environments has built-in compilers.
-I used 'pragma solidity ^0.8.28' compiler. 
+I used 'pragma solidity ^0.8.25' compiler. 
 The compiler will highlight any syntax errors or potential issues in the code.
 
 Deploying the Smart Contract:
