@@ -1,9 +1,12 @@
 //SPDX-License-Identifier: MIT
 pragma solidity ^0.8.25;
-contract SimpleStorage {
-    uint256 public favoriteNumber;
 
-// Struct to store a person’s name and their favorite number
+contract SimpleStorage {
+    uint256 private favoriteNumber; // Stores the user's favorite number
+
+    uint256[] public favoriteNumbers; //Dynamic array to store multiple favorite numbers
+
+    // Struct to store a person’s name and their favorite number
     struct Person {
         string name; // Person's name
         uint256 favoriteNumber; // Their favorite number
@@ -20,9 +23,12 @@ contract SimpleStorage {
     ContractState public state; // State variable to store the current contract state
 
     //storeNumber function to store favoriteNumber
+    event NumberUpdated(uint256 newNumber, address updatedBy);
+
     function storeNumber(uint256 _favoriteNumber) public {
-        favoriteNumber = _favoriteNumber;
-    }
+    favoriteNumber = _favoriteNumber;
+    emit NumberUpdated(_favoriteNumber, msg.sender);
+}
 
     //getFavoriteNumer function to return favoriteNumber
     function getFavoriteNumer() public view returns (uint256) {
@@ -71,11 +77,12 @@ contract SimpleStorage {
     function addFavoriteNumber(uint256 _number) public {
         favoriteNumbers.push(_number);
     }
+    mapping(string => uint256) public nameToFavoriteNumber;
 
     //This struct helps organize and manage multiple pieces of related data as a single entity
-    function addPerson(string memory _name, uint256 _favoriteNumber) public {
-        people.push(Person(_name, _favoriteNumber));
-    }
+   function addPerson(string memory _name, uint256 _favoriteNumber) public {
+    nameToFavoriteNumber[_name] = _favoriteNumber;
+}
 
     //function activates contract state
     function activateContract() public {
@@ -87,8 +94,27 @@ contract SimpleStorage {
         state = ContractState.Inactive;
     }
 
-    //funnction to check if contract state is active
+    //function to check if contract state is active
     function isActive() public view returns (bool) {
         return state == ContractState.Active;
     }
+// Function to store a number in the storage variable
+    function store(uint256 _favoriteNumber) public {
+        favoriteNumber = _favoriteNumber;
+    }
+
+    // Function that uses a memory variable
+    function updateNumber(uint256 _newNumber) public pure  returns (uint256) {
+        // Memory variable is used for temporary calculations
+        uint256 tempNumber = _newNumber + 5;
+        return tempNumber;
+    }
+
+    // Function that uses a calldata variable
+    function concatenateString(string calldata _inputString) public pure returns (string memory) {
+        // Memory variable to store the concatenated result
+        string memory newString = string(abi.encodePacked(_inputString, " is awesome!"));
+        return newString;
+    }
+
 }
