@@ -95,4 +95,6 @@ contract SimpleStorage {
     function isActive() public view returns (bool) {
         return state == ContractState.Active;
     }
+
+
 }
